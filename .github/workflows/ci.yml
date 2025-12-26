@@ -1,27 +1,25 @@
 name: C++CI pipeline
-on:[push]
-
+on: [push]
 jobs:
   build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
 
-steps:
--uses: actions/checkout@v3
+      - name: install build tools
+        run:
+          sudo apt update
+          sudo apt install -y cmake g++
+      
+      - name: configure project
+        run: |
+           cmake -S .-B build
 
--name: install build tools
-run:
+      - name: build project
+        run: |
+         cmake -- build build
 
- sudo apt update
- sudo apt install -y cmake g++
- -name:configure project
- run:|
- cmake -S .-B build
-
-  -name:build project
-  run
-     cmake -- build build
-
-  -name:runtest
-       run
+      - name: runtest
+        run: |
          cd build
-          ctest --output-on-failure
+         ctest --output-on-failure
