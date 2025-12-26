@@ -12,11 +12,11 @@ steps:
 -name: install build tools
 run:
 
-sudo apt update
-sudo apt install -y cmake g++
--name: Configure project
-run: 
-cmake -S .-B build
+ sudo apt update
+ sudo apt install -y cmake g++
+ -name:configure project
+ run:
+    cmake -S .-B build
 
 -name: Build project
 run:
