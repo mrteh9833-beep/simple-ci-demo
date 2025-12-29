@@ -12,8 +12,8 @@ jobs:
                  sudo apt install -y cmake g++
       
       - name: configure project
-        run: |
-           cmake -S .-B build
+        run: cmake -S . -B build
+           
 
       - name: build project
         run: |
