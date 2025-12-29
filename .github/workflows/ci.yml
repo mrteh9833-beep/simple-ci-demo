@@ -16,8 +16,8 @@ jobs:
            
 
       - name: build project
-        run: |
-         cmake -- build build
+        run: cmake --build build
+         
 
       - name: runtest
         run: |
